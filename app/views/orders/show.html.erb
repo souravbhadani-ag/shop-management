@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @order.customer_name %>
+</p>
+
+<p>
+  <strong>Order Number:</strong>
+  <%= @order.id %>
+</p>
+<p>
+  <strong>Order date:</strong>
+  <%= @order.created_at %>
+</p>
+
+<p>
+  <strong>Total amount:</strong>
+  <%= @order.total_amount %>
+</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Product Name</th>
+      <th>Product Code</th>
+      <th>Product Brand</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Total Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.order_items.each do |order_item| %>
+      <tr>
+        <td><%= order_item.product.name %></td>
+        <td><%= order_item.product.code %></td>
+        <td><%= order_item.product.brand %></td>
+        <td><%= order_item.unit_price %></td>
+        <td><%= order_item.quantity %></td>
+        <td><%= order_item.total_price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

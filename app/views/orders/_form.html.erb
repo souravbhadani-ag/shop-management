@@ -1,0 +1,52 @@
+<%= form_for order, class: "form-inline" do |f| %>
+  <% if order.errors.any? %>
+    <div class="error_messages">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this survey from being saved:</h2>
+      <ul>
+      <% order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <%= f.label :customer_name, class: 'form-label' %><br />
+      <%= f.text_field :customer_name, class: 'form-control' %>
+    </div>
+    <div class="form-group  col-md-6">
+      <%= f.label :total_amount, class: 'form-label' %>
+      <%= f.text_field :total_amount, class: 'form-control' %>
+    </div>
+  </div>
+  <%= f.fields_for :order_items do |order_item| %>
+    <%= render 'order_item_fields', f: order_item %>
+  <% end %>
+
+  <div class="row">
+    <div class="form-group col-md-12">
+      <%= link_to_add_fields "Add Order Item", f, :order_items %>
+    </div>
+    <div class="form-group col-md-12">
+      <%= f.submit %>
+    </div>
+  </div>
+<% end %>
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(document).on('click', 'form .remove_fields', function(event) {
+      $(this).prev('input[type=hidden]').val('1');
+      $(this).closest('fieldset').hide();
+      event.preventDefault();
+    });
+
+    $(document).on('click', 'form .add_fields', function(event) {
+      var time = new Date().getTime();
+      var regexp = new RegExp($(this).data('id'), 'g');
+      $(this).before($(this).data('fields').replace(regexp, time));
+      event.preventDefault();
+    });
+  });
+</script>
