@@ -21,7 +21,7 @@
       <tr>
         <td><%= order.id %></td>
         <td><%= order.customer_name %></td>
-        <td><%= order.order_date %></td>
+        <td><%= order.order_date.strftime("%A, %B %d, %Y - %H:%M") %></td>
         <td><%= order.total_amount %></td>
         <td>
           <%= link_to 'Show', order, class: 'btn btn-primary' %>

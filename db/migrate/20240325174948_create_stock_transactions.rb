@@ -6,6 +6,8 @@ class CreateStockTransactions < ActiveRecord::Migration[6.1]
       t.integer :quantity
       t.datetime :transaction_date
       t.float :mrp
+      t.float :total_amount
+      t.references :order
 
       t.timestamps
     end

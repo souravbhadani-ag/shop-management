@@ -25,7 +25,7 @@
         <td><%= stock_transaction.product.name %></td>
         <td><%= stock_transaction.transaction_type %></td>
         <td><%= stock_transaction.quantity %></td>
-        <td><%= stock_transaction.transaction_date %></td>
+        <td><%= stock_transaction.transaction_date.strftime("%A, %B %d, %Y - %H:%M") %></td>
         <td><%= link_to 'Show', stock_transaction, class: 'btn btn-primary' %></td>
         <td><%= link_to 'Edit', edit_stock_transaction_path(stock_transaction), class: 'btn btn-primary' %></td>
         <td><%= link_to 'Delete', stock_transaction, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>

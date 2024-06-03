@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2024_03_26_101605) do
 
   create_table "orders", force: :cascade do |t|
     t.string "customer_name"
-    t.date "order_date"
+    t.datetime "order_date"
     t.decimal "total_amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2024_03_26_101605) do
     t.text "description"
     t.decimal "price"
     t.string "brand"
-    t.decimal "quantity", default: "0.0"
+    t.integer "quantity", default: 0
     t.string "code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -49,8 +49,11 @@ ActiveRecord::Schema.define(version: 2024_03_26_101605) do
     t.integer "quantity"
     t.datetime "transaction_date"
     t.float "mrp"
+    t.float "total_amount"
+    t.integer "order_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_stock_transactions_on_order_id"
     t.index ["product_id"], name: "index_stock_transactions_on_product_id"
   end
 

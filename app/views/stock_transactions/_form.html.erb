@@ -13,11 +13,11 @@
 
   <div class="form-group">
     <%= form.label :product_id %>
-    <%= form.select :product_id, options_for_select(Product.product_search_list), {}, class: 'form-control' %>
+    <%= form.select :product_id, options_for_select(Product.product_search_list, form.object.product_id), class: 'form-control' %>
   </div>
   <div class="form-group">
     <%= form.label :transaction_type %>
-    <%= form.select :transaction_type, options_for_select(StockTransaction::TransactionType), {}, class: 'form-control' %>
+    <%= form.select :transaction_type, options_for_select(StockTransaction::TransactionType, form.object.transaction_type), class: 'form-control' %>
   </div>
   <div class="form-group">
     <%= form.label :quantity %>

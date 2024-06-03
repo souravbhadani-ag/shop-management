@@ -2,7 +2,7 @@
   <%= f.hidden_field :order_id, class: 'form-control' %>
   <div class="col-md-3">
     <%= f.label :product_id, class: "col-form-label" %>
-    <%= f.select :product_id, options_for_select(Product.product_search_list), {}, class: 'form-control' %>
+    <%= f.select :product_id, options_for_select(Product.product_search_list, f.object.product_id), class: 'form-control' %>
   </div>
   <div class="col-md-3">
     <%= f.label :quantity, class: "col-form-label" %>
